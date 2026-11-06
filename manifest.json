@@ -1,0 +1,14 @@
+{
+  "name": "Dice Lock",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "description": "ทอยลูกเต๋าร่วมกัน และให้ DM ล็อกผลลูกเต๋าของผู้เล่น/DM ได้แบบลับ (เห็นแผงล็อกเฉพาะ DM)",
+  "author": "You",
+  "action": {
+    "title": "Dice Lock",
+    "icon": "/icon.svg",
+    "popover": "/index.html",
+    "height": 600,
+    "width": 380
+  }
+}

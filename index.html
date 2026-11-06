@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dice Lock</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; }
+    body { margin: 0; padding: 12px; background: #222639; color: #eee; font-size: 14px; }
+    h2 { font-size: 13px; margin: 14px 0 6px; text-transform: uppercase; letter-spacing: .06em; color: #9aa3c7; }
+    .row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 6px; }
+    button, select, input { font: inherit; border-radius: 6px; border: 1px solid #4b5280; background: #2e3354; color: inherit; padding: 6px 8px; }
+    button { cursor: pointer; }
+    button:hover { background: #3a4070; }
+    button.on { background: #6c63ff; border-color: #6c63ff; }
+    button.primary { background: #6c63ff; border-color: #6c63ff; font-weight: 600; }
+    input[type=number] { width: 60px; }
+    input[type=text] { flex: 1; min-width: 80px; }
+    #log { background: #1a1d2e; border-radius: 8px; padding: 8px; height: 150px; overflow-y: auto; }
+    .entry { padding: 3px 0; border-bottom: 1px solid #2b2f48; }
+    .entry b { color: #b9b4ff; }
+    .total { font-weight: 700; color: #ffd866; }
+    #dm { border-top: 2px solid #6c63ff; margin-top: 14px; padding-top: 4px; }
+    .lock { display: flex; justify-content: space-between; align-items: center; background: #1a1d2e; border-radius: 6px; padding: 4px 8px; margin-bottom: 4px; }
+    .muted { color: #8a90b0; font-size: 12px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h2>ทอยลูกเต๋า</h2>
+  <div class="row" id="dice"></div>
+  <div class="row">
+    <label>จำนวน <input type="number" id="count" value="1" min="1" max="20" /></label>
+    <label>โบนัส <input type="number" id="mod" value="0" /></label>
+  </div>
+  <div class="row">
+    <input type="text" id="label" placeholder="ป้ายกำกับ เช่น Attack, Perception" />
+    <button class="primary" id="roll">ทอย</button>
+  </div>
+
+  <h2>ผลการทอย</h2>
+  <div id="log"></div>
+
+  <section id="dm" class="hidden">
+    <h2>🔒 แผงล็อก (DM เท่านั้น)</h2>
+    <label class="row"><input type="checkbox" id="enabled" checked /> เปิดใช้การล็อก</label>
+    <div class="row">
+      <select id="lockPlayer"></select>
+      <select id="lockSides"></select>
+      <input type="number" id="lockValue" value="20" min="1" />
+      <select id="lockMode">
+        <option value="once">ครั้งเดียว</option>
+        <option value="always">ล็อกตลอด</option>
+      </select>
+      <button class="primary" id="addLock">เพิ่มล็อก</button>
+    </div>
+    <div id="locks"></div>
+    <p class="muted">ล็อกถูกเก็บในเบราว์เซอร์ของ DM เท่านั้น ผู้เล่นมองไม่เห็นและเข้าถึงไม่ได้ แต่ DM ต้องออนไลน์อยู่ ล็อกจึงจะทำงาน</p>
+  </section>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
